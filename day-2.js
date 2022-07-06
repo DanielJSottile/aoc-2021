@@ -36,7 +36,7 @@ Calculate the horizontal position and depth you would have after following the p
 /**
  * 
  * @param {string} input 
- * @returns {number[]}
+ * @returns {[string, number]}
  */
  const parseInputToDirMatrix = (input) => {
   return input.split('\n').map((direction) => {
@@ -54,20 +54,20 @@ Calculate the horizontal position and depth you would have after following the p
 const directions = (input) => {
   if (!input) return 0
   const arr = parseInputToDirMatrix(input)
-  const directionsObj = {forward: 0, up: 0, down: 0}
+  const directionsObj = {forward: 0, depth: 0}
   for (const direction of arr) {
     if (direction[0] === 'forward') {
       directionsObj.forward += direction[1]
     }
     if (direction[0] === 'up') {
-      directionsObj.up += direction[1]
+      directionsObj.depth -= direction[1]
     }
     if (direction[0] === 'down') {
-      directionsObj.down += direction[1]
+      directionsObj.depth += direction[1]
     }
   }
 
-  return directionsObj.forward * (directionsObj.down - directionsObj.up)
+  return directionsObj.forward * directionsObj.depth
 }
 
 console.log(directions(input)) /** 1507611 */
@@ -130,7 +130,7 @@ Using this new interpretation of the commands, calculate the horizontal position
   return directionsObj.forward * directionsObj.depth
 }
 
-console.log(directionWithAim(input)) /** 1507611 */
+console.log(directionWithAim(input)) /** 1880593125 */
 assert(directionWithAim() === 0)
 assert(directionWithAim(`forward 5
 down 5
