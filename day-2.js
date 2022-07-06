@@ -56,14 +56,19 @@ const directions = (input) => {
   const arr = parseInputToDirMatrix(input)
   const directionsObj = {forward: 0, depth: 0}
   for (const direction of arr) {
-    if (direction[0] === 'forward') {
-      directionsObj.forward += direction[1]
-    }
-    if (direction[0] === 'up') {
-      directionsObj.depth -= direction[1]
-    }
-    if (direction[0] === 'down') {
-      directionsObj.depth += direction[1]
+    switch (direction[0]) {
+      case 'forward':
+        directionsObj.forward += direction[1]
+        break
+      case 'up':
+        directionsObj.depth -= direction[1]
+        break
+      case 'down':
+        directionsObj.depth += direction[1]
+        break
+      default:
+        console.log(direction[0])
+        throw 'illegal direction'
     }
   }
 
@@ -115,15 +120,20 @@ Using this new interpretation of the commands, calculate the horizontal position
   const arr = parseInputToDirMatrix(input)
   const directionsObj = {forward: 0, depth: 0, aim: 0}
   for (const direction of arr) {
-    if (direction[0] === 'forward') {
-      directionsObj.forward += direction[1]
-      directionsObj.depth += directionsObj.aim * direction[1]
-    }
-    if (direction[0] === 'up') {
-      directionsObj.aim -= direction[1]
-    }
-    if (direction[0] === 'down') {
-      directionsObj.aim += direction[1]
+    switch (direction[0]) {
+      case 'forward':
+        directionsObj.forward += direction[1]
+        directionsObj.depth += directionsObj.aim * direction[1]
+        break
+      case 'up':
+        directionsObj.aim -= direction[1]
+        break
+      case 'down':
+        directionsObj.aim += direction[1]
+        break
+      default:
+        console.log(direction[0])
+        throw 'illegal direction'
     }
   }
  
