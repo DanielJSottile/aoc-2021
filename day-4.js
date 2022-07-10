@@ -176,13 +176,6 @@ const recursion = (drawnNumbers, bingoBoards) => {
   }
 
   return recursion(drawnNumbers.slice(1), filtered)
-
-   /** draw a number */
-  /** for each of the boards: */
-  /** if there's match, hit */
-  /** if there's a winner, filter out the boards by all bingos that match the winner */
-  /** draw a number */
-  /** of there's 10 rows/columns left, winner is first among those */
 }
 
 /**
